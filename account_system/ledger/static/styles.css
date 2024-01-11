@@ -1,0 +1,154 @@
+body {
+    font-family: sans-serif;
+    background-color: #f5f5f5; 
+    margin: 40px;
+  }
+  
+  .container {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  }
+  
+ 
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+
+  fieldset.field-set {
+    border: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  input[type="date"],
+  select,
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box; 
+  }
+  
+  
+  
+/* home-page */
+
+.home-body {
+    background-image: url('imgs/background.avif');
+     
+}
+ 
+  .home-div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+    
+  }
+  
+ 
+  h1 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  h2 {
+    font-size: 20px;
+    color: #555;
+  }
+  
+ 
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #777;
+  }
+ 
+  .btn-container button a {
+    color: #000200;
+    text-decoration: none;
+  }
+  
+  .btn-container button a:hover {
+    text-decoration: underline;
+  }
+  
+ 
+  .btn-container {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(173, 135, 135, 0.3) ;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  .key-fields {
+    background: rgba(173, 199, 174, 0.3) 
+  }
+
+
+  login css
+
+  .login-body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+  }
+
+  #login-container {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-body label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.login-body input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
