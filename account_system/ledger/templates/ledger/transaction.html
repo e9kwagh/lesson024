@@ -1,14 +1,58 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Transaction</title>
-    <link rel="stylesheet" type="text/css" href="../../static/styles.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'ledger/styles.css' %}">
     <link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
 </head>
 <body>
     <div class="container">
         <h1>WELCOME!</h1>
-        <button class='btn btn-success pull-right'><a href="home.html" class="btn btn-primary">Log out</a></button>
+        <button class='btn btn-success pull-right'><a href="{% url  'home' %}" class="btn btn-primary">Log out</a></button>
+        <fieldset class="field-set">
+            <form method="post">
+                {% csrf_token %}
+                <h1 class="text-center">Enter your transaction details</h1>
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </fieldset>
+        <button class="btn btn-success"><a href="{% url 'report' %}">Generate Report</a></button>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'ledger/styles.css' %}">
+    <link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
+</head>
+<body>
+    <div class="container">
+        <h1>WELCOME!</h1>
+        <button class='btn btn-success pull-right'><a href="{% url  'home' %}" class="btn btn-primary">Log out</a></button>
         <fieldset class="field-set">
             <form>
                 <h1 class="text-center">Enter your transaction details</h1>
@@ -65,7 +109,7 @@
                 <button type="submit" class="btn btn-success">Submit</button>
             </form>
         </fieldset>
-        <button class="btn btn-success"><a href="report.html">Generate Report</a></button>
+        <button class="btn btn-success"><a href="{% url 'report' %}">Generate Report</a></button>
     </div>
 </body>
-</html>
+</html> -->

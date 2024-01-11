@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,12 +26,12 @@
             <tbody>
                 {% for transaction in transactions %}
                     <tr>
-                        <td>{{ transaction.date }}</td>
+                        <td>{{ transaction.assign_date }}</td>
                         <td>{{ transaction.category }}</td>
                         <td>{{ transaction.description }}</td>
                         <td>{{ transaction.debit }}</td>
                         <td>{{ transaction.credit }}</td>
-                        <td>{{ transaction.mode_of_payment }}</td>
+                        <td>{{ transaction.m_of_pay }}</td>
                         <td>{{ transaction.balance }}</td>
                     </tr>
                 {% endfor %}

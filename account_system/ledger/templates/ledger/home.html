@@ -1,19 +1,23 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to 1E9 Ledger</title>
-  <link rel="stylesheet" href="../../static/styles.css"> </head>
+  <link rel="stylesheet" href="{% static 'ledger/styles.css' %}">
+</head> 
 <body class="home-body">
-  <div class=""home-div>
+  <div class="home-div">
+
     <section class="home-hero">
         <div class="home-container">
           <h3>Welcome to 1E9 Ledger - Your Ultimate Financial Companion!</h3>
           <section class="home-cta">
             <div class="btn-container">
-              <button><a href="login.html" class="btn btn-primary">Log In</a></button>
-              <button><a href="signup.html" class="btn btn-secondary">Sign Up</a></button>
+              <button><a href="{% url  'loginpage' %}" class="btn btn-primary">Log In</a></button>
+              <button><a href="{% url 'signuppage' %} " class="btn btn-secondary">Sign Up</a></button>
             </div>
           </section>
           <div class="des-container">
