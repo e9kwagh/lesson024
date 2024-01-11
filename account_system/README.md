@@ -28,7 +28,7 @@ git clone https://github.com/e9kwagh/lesson024.git
 ```bash
 pip install -r requirements.txt
 ```
-**If require change the django version as per your need in requirements.txt**
+**If require, change the django version as per your need in requirements.txt**
 
 **Now if you are in the Account_system and can see the manage.py run the following command**
 ```bash
