@@ -75,31 +75,8 @@ def transaction(request):
             amount = form.cleaned_data['amount']
             payment_mode = form.cleaned_data['payment_mode']
 
-            account = Account.objects.filter(user=request.user).first()
-
-            if account is None:
-                account = Account.objects.create(
-                    user=request.user,
-                    balance=0,
-                    debit=0,
-                    credit=0,
-                    assign_date=transaction_date,
-                    category=category,
-                    description=description,
-                    m_of_pay=payment_mode
-                )
-            else:
-
-                account = Account.objects.create(
-                    user=request.user,
-                    balance=account.balance,
-                    debit=account.debit,
-                    credit=account.credit,
-                    assign_date=transaction_date,
-                    category=category,
-                    description=description,
-                    m_of_pay=payment_mode
-                )
+            # Fetch the existing account for the user
+            account, created = Account.objects.get_or_create(user=request.user)
 
             if transaction_type == 'debit':
                 account.debit += amount
@@ -107,6 +84,10 @@ def transaction(request):
                 account.credit += amount
 
             account.balance = account.credit - account.debit
+            account.assign_date = transaction_date
+            account.category = category
+            account.description = description
+            account.m_of_pay = payment_mode
             account.save()
 
             messages.success(request, 'Transaction successful.')

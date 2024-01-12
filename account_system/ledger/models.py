@@ -14,8 +14,8 @@ class Account(models.Model):
     credit = models.IntegerField()
     m_of_pay = models.CharField(max_length=200)
 
-    class Meta:
-        ordering = ["updated", "created"]
+    # class Meta:
+    #     ordering = ["updated", "created"]
 
     def __str__(self):
         return self.user.username
