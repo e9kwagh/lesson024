@@ -75,7 +75,7 @@ def transaction(request):
             amount = form.cleaned_data['amount']
             payment_mode = form.cleaned_data['payment_mode']
 
-            # Fetch the existing account for the user
+         
             account, created = Account.objects.get_or_create(user=request.user)
 
             if transaction_type == 'debit':
