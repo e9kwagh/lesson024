@@ -60,39 +60,45 @@ def signuppage(request):
     return render(request, "ledger/signuppage.html", context)
 
 
-
-
-@login_required(login_url='login')
+@login_required(login_url="login")
 def transaction(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = TransactionForm(request.POST)
 
         if form.is_valid():
-            transaction_date = form.cleaned_data['date']
-            category = form.cleaned_data['category']
-            description = form.cleaned_data['description']
-            transaction_type = form.cleaned_data['transaction_type']
-            amount = form.cleaned_data['amount']
-            payment_mode = form.cleaned_data['payment_mode']
+            user = request.user
+            date = form.cleaned_data["date"]
+            category = form.cleaned_data["category"]
+            description = form.cleaned_data["description"]
+            transaction_type = form.cleaned_data["transaction_type"]
+            amount = form.cleaned_data["amount"]
+            payment_mode = form.cleaned_data["payment_mode"]
 
-         
-            account, created = Account.objects.get_or_create(user=request.user)
+            debit = amount if transaction_type == "debit" else 0
+            credit = amount if transaction_type == "credit" else 0
 
-            if transaction_type == 'debit':
-                account.debit += amount
-            else:
-                account.credit += amount
+            last_transaction = (
+                Account.objects.filter(user=user).order_by("-assign_date").first()
+            )
+            balance = (
+                last_transaction.balance + credit - debit
+                if last_transaction
+                else credit - debit
+            )
 
-            account.balance = account.credit - account.debit
-            account.assign_date = transaction_date
-            account.category = category
-            account.description = description
-            account.m_of_pay = payment_mode
-            account.save()
+            Account.objects.create(
+                user=user,
+                assign_date=date,
+                balance=balance,
+                category=category,
+                description=description,
+                debit=debit,
+                credit=credit,
+                m_of_pay=payment_mode,
+            )
 
-            messages.success(request, 'Transaction successful.')
-            return redirect('report')
+            return redirect("report")
     else:
         form = TransactionForm()
 
-    return render(request, "ledger/transaction.html", {'form': form})
+    return render(request, "ledger/transaction.html", {"form": form})
